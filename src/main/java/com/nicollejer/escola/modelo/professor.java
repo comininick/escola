@@ -1,16 +1,16 @@
 package com.nicollejer.escola.modelo;
 
-public class professor {
+public class Professor {
     
 
     private String nome;
     private String cpf;
 
     @Deprecated
-    public professor (){
+    public Professor (){
     }
 
-    public professor(String nome, String cpf) {
+    public Professor(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
     }
@@ -52,7 +52,7 @@ public class professor {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        professor other = (professor) obj;
+        Professor other = (Professor) obj;
         if (cpf == null) {
             if (other.cpf != null)
                 return false;
@@ -60,9 +60,6 @@ public class professor {
             return false;
         return true;
     }
-
-    
-    
 
     
 
