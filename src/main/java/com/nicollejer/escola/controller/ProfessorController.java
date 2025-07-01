@@ -17,5 +17,9 @@ public class ProfessorController {
     public String ola(){
         return "<h1>Nicolle</h1>";
     }
+    @GetMapping( value = "/insert")
+    public String insert(){
+        return "<h1>tentando salvar o professor dos alunos</h1>";
+    }
 
 }
