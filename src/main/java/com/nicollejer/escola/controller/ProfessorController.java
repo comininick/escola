@@ -1,10 +1,15 @@
 package com.nicollejer.escola.controller;
 
+import java.net.URI;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.nicollejer.escola.dto.ProfessorDto;
 import com.nicollejer.escola.modelo.Professor;
@@ -27,18 +32,21 @@ public class ProfessorController {
         return "<h1>Nicolle linda</h1>"; //return: devolve a resposta pra quem chamou// nao funciona obv com "alert"
     }
 
-    @GetMapping( value = "/insert")
-    public String insert(@RequestBody ProfessorDto professorDto){
+    @PostMapping( value = "/insert")
+    public ResponseEntity<?> insert(@RequestBody ProfessorDto professorDto){
 
         Professor professor = professorDto.novoProfessor();
-        System.out.println(professor.toString());
 
         professorRepository.save(professor);
 
+        System.out.println(professor.toString());
 
- 
-    
-        return"<h1>tentando salvar o professor dos alunos</h1>";
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                                            .path("/id")
+                                            .buildAndExpand(professor.getId())
+                                            .toUri();
+
+        return ResponseEntity.created(uri).body(professor);        
     }
 }
 
