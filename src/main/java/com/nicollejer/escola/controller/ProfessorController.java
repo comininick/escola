@@ -1,5 +1,6 @@
 package com.nicollejer.escola.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,10 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.nicollejer.escola.dto.ProfessorDto;
 import com.nicollejer.escola.modelo.Professor;
+import com.nicollejer.escola.repository.professorRepository;
 
 @RestController //transforma a nossa classe em um controller antigamente chamado de bean
 @RequestMapping(value = "/professor") // mapeando a url, navegador chama pelo vetor
 public class ProfessorController {
+
+    @Autowired
+    private professorRepository professorRepository;    
 
     @GetMapping(value = "/imprimir") //mapeando do metodo imprimir. usando o verbo get -> pegar ou buscar
     public void imprimir(){//void -> não retorna nada
@@ -27,6 +32,8 @@ public class ProfessorController {
 
         Professor professor = professorDto.novoProfessor();
         System.out.println(professor.toString());
+
+        professorRepository.save(professor);
 
 
  
