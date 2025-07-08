@@ -1,6 +1,7 @@
 package com.nicollejer.escola.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +33,12 @@ public class ProfessorController {
         return "<h1>Nicolle linda</h1>"; //return: devolve a resposta pra quem chamou// nao funciona obv com "alert"
     }
 
+    @GetMapping( value = "/listaprofessor")
+    public List<Professor> findAll(){
+        return professorRepository.findAll();
+    }
+
+
     @PostMapping( value = "/insert")
     public ResponseEntity<?> insert(@RequestBody ProfessorDto professorDto){
 
@@ -49,7 +56,6 @@ public class ProfessorController {
         return ResponseEntity.created(uri).body(professor);        
     }
 }
-
 
 
 
