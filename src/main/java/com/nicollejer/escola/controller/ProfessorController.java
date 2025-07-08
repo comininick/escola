@@ -2,6 +2,7 @@ package com.nicollejer.escola.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -44,6 +45,15 @@ public class ProfessorController {
         professorRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+     @GetMapping( value = "/{id}")
+    public ResponseEntity<Professor> buscarprofessorpor (@PathVariable Long id){
+        Optional<Professor> ProfessorDoBanco = professorRepository.findById(id);
+
+           // Professor professor = ProfessorDoBanco.get();
+
+          return ResponseEntity.ok(ProfessorDoBanco.get());
+    } 
 
     @PostMapping( value = "/insert")
     public ResponseEntity<?> insert(@RequestBody ProfessorDto professorDto){
