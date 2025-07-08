@@ -47,14 +47,19 @@ public class ProfessorController {
     }
 
      @GetMapping( value = "/{id}")
-    public ResponseEntity<Professor> buscarprofessorpor (@PathVariable Long id){
+    public ResponseEntity<Professor> ProfessorDoBanco (@PathVariable Long id){
         Optional<Professor> ProfessorDoBanco = professorRepository.findById(id);
 
-           // Professor professor = ProfessorDoBanco.get();
-
-          return ResponseEntity.ok(ProfessorDoBanco.get());
+          return ResponseEntity.ok(ProfessorDoBanco);
     } 
 
+    @GetMapping( value = "/consultaPorNome")
+    public ResponseEntity<Professor> buscarprofessorpornome (@PathVariable String nome){
+        Professor buscarprofessorpornome = professorRepository.findByIdNome (nome);
+
+          return ResponseEntity.ok(buscarprofessorpornome.get());
+    } 
+    
     @PostMapping( value = "/insert")
     public ResponseEntity<?> insert(@RequestBody ProfessorDto professorDto){
 
@@ -71,6 +76,7 @@ public class ProfessorController {
 
         return ResponseEntity.created(uri).body(professor);        
     }
+
 }
 
 
