@@ -4,7 +4,6 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
-import javax.swing.Spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -65,7 +64,7 @@ public class ProfessorController {
     }
 
 
-             
+
             
              @PostMapping( value = "/insert")
     public ResponseEntity<?> insert(@RequestBody ProfessorDto professorDto){
