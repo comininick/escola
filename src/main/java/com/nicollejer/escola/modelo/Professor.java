@@ -76,20 +76,4 @@ public class Professor {
             return false;
         return true;
     }
-
-    public Professor findByNome(String nome2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByNome'");
-    }
-
- 
-
-    
-
-
-
-
-
-
-
 }
