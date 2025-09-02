@@ -1,26 +1,44 @@
 package com.nicollejer.escola.dto;
 
+import com.nicollejer.escola.modelo.Materia;
+
 public class MateriaDto {
-   private Long id;
+
    private String nome;
+
+   private ProfessorDto professor;
+
+   @Deprecated
    public MateriaDto() {
-    
    }
-   public Long getId() {
-    return id;
+
+   public MateriaDto(String nome, ProfessorDto professor) {
+      this.nome = nome;
+      this.professor = professor;
    }
-   public void setId(Long id) {
-    this.id = id;
-   }
+
    public String getNome() {
-    return nome;
+      return nome;
    }
+
    public void setNome(String nome) {
-    this.nome = nome;
+      this.nome = nome;
    }
+
+   public ProfessorDto getProfessor() {
+      return professor;
+   }
+
+   public void setProfessor(ProfessorDto professor) {
+      this.professor = professor;
+   }
+
    @Override
    public String toString() {
-    return "MateriaDto [id=" + id + ", nome=" + nome + "]";
-   }  
-    
+    return "MateriaDto [nome=" + nome + ", professor=" + professor + "]";
+   }
+
+   public Materia novaMateria() {
+      return new Materia(nome);
+   }
 }

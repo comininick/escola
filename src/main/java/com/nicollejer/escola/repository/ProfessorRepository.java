@@ -7,5 +7,5 @@ import com.nicollejer.escola.modelo.Professor;
 
 public interface ProfessorRepository extends JpaRepository<Professor, Long>{
     @Query (value = "select * from professor where nome like ?", nativeQuery = true)
-    public Professor findByIdNome(String nome);
+    public Professor findByNome(String nome);
 }

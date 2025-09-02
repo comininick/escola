@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class EscolaApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(EscolaApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(EscolaApplication.class, args);
+    }
 }
+
+
